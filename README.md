@@ -14,7 +14,14 @@ window.DOXYME = systemInfo();
 
 // Use
 
-window.DOXYME.enableWebcam();
+window.DOXYME.enableWebcam()
+  .then(() => {
+    // User allowed browser to access camera/microphone
+  })
+  .catch(err => {
+    // There was error
+    console.log(err);
+  });
 
 window.DOXYME.on('localStream', stream => {
   console.log(stream);
