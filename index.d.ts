@@ -39,6 +39,6 @@ interface GlobalSystemInfoObject {
 
     on<EventName extends keyof EventMap> (
         event: EventName,
-        callback: (event: EventMap[EventName]) => void
+        callback: (payload: EventMap[EventName]) => void
     ): void
 }
