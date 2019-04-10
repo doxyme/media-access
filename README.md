@@ -9,7 +9,7 @@ yarn add git://github.com/doxyme/sample-system-info
 ```js
 // Initialise
 
-import systemInfo from 'sample-system-info';
+import systemInfo from 'doxyme-system-info';
 window.DOXYME = systemInfo();
 
 // Use
@@ -29,7 +29,7 @@ window.DOXYME.on('localVolumeChange', volume => {
 ```js
 // Alternatively, import mocked version
 
-import systemInfo from 'sample-system-info/mock';
+import systemInfo from 'doxyme-system-info/mock';
 window.DOXYME = systemInfo();
 
 // Usage is the same
