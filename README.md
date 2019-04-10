@@ -19,7 +19,7 @@ window.DOXYME.enableWebcam()
     // User allowed browser to access camera/microphone
   })
   .catch(err => {
-    // There was error
+    // There was an error
     console.log(err);
   });
 
