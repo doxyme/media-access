@@ -10,7 +10,7 @@ function uuid() {
 const emitter = new EventEmitter;
 
 /** @implements GlobalSystemInfoObject */
-function SystemInfo() {
+function DoxymeSystemInfo() {
   var self = this;
 
   emitter.on('localStream', function() {
@@ -70,5 +70,5 @@ function SystemInfo() {
 }
 
 module.exports = function() {
-  return new SystemInfo();
+  return new DoxymeSystemInfo();
 };

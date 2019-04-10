@@ -7,7 +7,7 @@ import { waitForDeviceInfo } from './lib/devices'
 const emitter = new EventEmitter;
 
 /** @implements {GlobalSystemInfoObject} */
-class SystemInfo {
+class DoxymeSystemInfo {
   constructor() {
     this.userMediaStatus = {};
     this.systemInfo = getSystemInfo();
@@ -40,6 +40,6 @@ class SystemInfo {
   }
 }
 
-export default function activate() {
-  return new SystemInfo();
+export default function() {
+  return new DoxymeSystemInfo();
 }
