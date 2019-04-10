@@ -15,6 +15,15 @@ class SystemInfo {
     waitForDeviceInfo().then(userMediaStatus => {
       this.userMediaStatus = userMediaStatus;
     });
+
+    emitter.on('localStream', stream => {
+      const speech = hark(stream, {
+        interval: 500
+      });
+      speech.on('volume_change', volume => {
+        emitter.emit('localVolumeChange', volume);
+      });
+    })
   }
 
   enableWebcam() {
@@ -23,13 +32,6 @@ class SystemInfo {
       video: true
     }).then(stream => {
       emitter.emit('localStream', stream);
-
-      const speech = hark(stream, {
-        interval: 500
-      });
-      speech.on('volume_change', volume => {
-        emitter.emit('localVolumeChange', volume);
-      });
     });
   }
 

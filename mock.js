@@ -13,6 +13,12 @@ const emitter = new EventEmitter;
 function SystemInfo() {
   var self = this;
 
+  emitter.on('localStream', function() {
+    setInterval(function() {
+      emitter.emit('localVolumeChange', Math.floor(Math.random() * -100));
+    }, 500);
+  });
+
   this.systemInfo = {
     platform: 'desktop',
     os: 'linux',
@@ -40,7 +46,7 @@ function SystemInfo() {
       ],
       hasCamera: true,
       hasMicrophone: true,
-      hasMediaAccess: true,
+      hasMediaAccess: false,
     }
   }, 2000);
 
@@ -49,9 +55,6 @@ function SystemInfo() {
       if(confirm("Allow browser to access your microphone and camera?")) {
         self.userMediaStatus.hasMediaAccess = true;
         emitter.emit('localStream', new MediaStream());
-        setInterval(function() {
-          emitter.emit('localVolumeChange', Math.floor(Math.random() * -100));
-        }, 500);
         resolve();
       } else {
         var error = new Error("End user denied permission");
