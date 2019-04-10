@@ -18,6 +18,10 @@ window.DOXYME.enableWebcam();
 
 window.DOXYME.on('localStream', stream => {
   console.log(stream);
+  
+  // Attach stream to video element
+  const video = document.querySelector('#dokbot-video');
+  video.srcObject = stream;
 });
 
 window.DOXYME.on('localVolumeChange', volume => {
