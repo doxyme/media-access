@@ -27,11 +27,13 @@ class DoxymeSystemInfo {
   }
 
   enableWebcam() {
-    return navigator.mediaDevices.getUserMedia({
-      audio: true,
-      video: true
-    }).then(stream => {
-      emitter.emit('localStream', stream);
+    return waitForDeviceInfo().then(deviceInfo => {
+      return navigator.mediaDevices.getUserMedia({
+        audio: deviceInfo.hasMicrophone,
+        video: deviceInfo.hasCamera
+      }).then(stream => {
+        emitter.emit('localStream', stream);
+      });
     });
   }
 
