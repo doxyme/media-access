@@ -9,8 +9,8 @@ yarn add git://github.com/doxyme/sample-system-info
 ```js
 // Initialise
 
-import systemInfo from 'doxyme-system-info';
-window.DOXYME = systemInfo();
+import doxymeSystemInfo from 'doxyme-system-info';
+window.DOXYME = doxymeSystemInfo;
 
 // Use
 
@@ -40,8 +40,8 @@ window.DOXYME.on('localVolumeChange', volume => {
 ```js
 // Alternatively, import mocked version
 
-import systemInfo from 'doxyme-system-info/mock';
-window.DOXYME = systemInfo();
+import doxymeSystemInfo from 'doxyme-system-info/mock';
+window.DOXYME = doxymeSystemInfo;
 
 // Usage is the same
 // ...

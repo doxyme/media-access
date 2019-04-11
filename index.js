@@ -45,6 +45,5 @@ class DoxymeSystemInfo {
   }
 }
 
-export default function() {
-  return new DoxymeSystemInfo();
-}
+/** @type GlobalSystemInfoObject */
+export default new DoxymeSystemInfo();

@@ -69,6 +69,5 @@ function DoxymeSystemInfo() {
   }
 }
 
-module.exports = function() {
-  return new DoxymeSystemInfo();
-};
+/** @type GlobalSystemInfoObject */
+module.exports = new DoxymeSystemInfo();
