@@ -33,6 +33,9 @@ class DoxymeSystemInfo {
         video: deviceInfo.hasCamera
       }).then(stream => {
         emitter.emit('localStream', stream);
+        waitForDeviceInfo().then(userMediaStatus => {
+          this.userMediaStatus = userMediaStatus;
+        });
       });
     });
   }
