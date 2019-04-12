@@ -25,7 +25,7 @@ window.DOXYME.requestMediaAccess()
   })
   .catch(err => {
     // There was an error
-    console.log(err);
+    console.error(err);
   });
 
 window.DOXYME.on('localVolumeChange', volume => {

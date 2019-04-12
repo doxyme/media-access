@@ -28,7 +28,7 @@ class DoxymeSystemInfo {
   }
 
   requestMediaAccess() {
-    if(localStream) return localStream;
+    if(localStream) return Promise.resolve(localStream);
     return waitForDeviceInfo().then(deviceInfo => {
       return navigator.mediaDevices.getUserMedia({
         audio: deviceInfo.hasMicrophone,

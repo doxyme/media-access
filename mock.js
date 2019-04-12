@@ -8,7 +8,7 @@ function uuid() {
 }
 
 const emitter = new EventEmitter;
-const localStream = new MediaStream();
+let localStream = null;
 
 /** @implements GlobalSystemInfoObject */
 function DoxymeSystemInfo() {
@@ -53,10 +53,11 @@ function DoxymeSystemInfo() {
 
   this.requestMediaAccess = function requestMediaAccess() {
     return new Promise(function(resolve, reject) {
+      if(localStream) return resolve(localStream);
       if(confirm("Allow browser to access your microphone and camera?")) {
         self.userMediaStatus.hasMediaAccess = true;
-        emitter.emit('localStream', localStream);
-        resolve();
+        localStream = new MediaStream();
+        resolve(localStream);
       } else {
         var error = new Error("End user denied permission");
         error.name = "NotAllowedError";
