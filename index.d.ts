@@ -35,7 +35,7 @@ interface GlobalSystemInfoObject {
         hasMediaAccess: Boolean // True if user allowed access in a previous session and browser saved the permission
     },
 
-    enableWebcam(): Promise<void>,
+    requestMediaAccess(): Promise<void>,
 
     on<EventName extends keyof EventMap> (
         event: EventName,

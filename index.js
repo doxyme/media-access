@@ -26,7 +26,7 @@ class DoxymeSystemInfo {
     })
   }
 
-  enableWebcam() {
+  requestMediaAccess() {
     return waitForDeviceInfo().then(deviceInfo => {
       return navigator.mediaDevices.getUserMedia({
         audio: deviceInfo.hasMicrophone,

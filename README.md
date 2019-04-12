@@ -14,7 +14,7 @@ window.DOXYME = doxymeSystemInfo;
 
 // Use
 
-window.DOXYME.enableWebcam()
+window.DOXYME.requestMediaAccess()
   .then(() => {
     // User allowed browser to access camera/microphone
   })

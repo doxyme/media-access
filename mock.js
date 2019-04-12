@@ -50,7 +50,7 @@ function DoxymeSystemInfo() {
     }
   }, 2000);
 
-  this.enableWebcam = function enableWebcam() {
+  this.requestMediaAccess = function requestMediaAccess() {
     return new Promise(function(resolve, reject) {
       if(confirm("Allow browser to access your microphone and camera?")) {
         self.userMediaStatus.hasMediaAccess = true;
