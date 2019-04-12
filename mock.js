@@ -14,12 +14,6 @@ let localStream = null;
 function DoxymeSystemInfo() {
   var self = this;
 
-  emitter.on('localStream', function() {
-    setInterval(function() {
-      emitter.emit('localVolumeChange', Math.floor(Math.random() * -100));
-    }, 500);
-  });
-
   this.systemInfo = {
     platform: 'desktop',
     os: 'linux',
@@ -57,6 +51,9 @@ function DoxymeSystemInfo() {
       if(confirm("Allow browser to access your microphone and camera?")) {
         self.userMediaStatus.hasMediaAccess = true;
         localStream = new MediaStream();
+        setInterval(function() {
+          emitter.emit('localVolumeChange', Math.floor(Math.random() * -100));
+        }, 500);
         resolve(localStream);
       } else {
         var error = new Error("End user denied permission");

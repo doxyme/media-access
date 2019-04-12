@@ -16,15 +16,6 @@ class DoxymeSystemInfo {
     waitForDeviceInfo().then(userMediaStatus => {
       this.userMediaStatus = userMediaStatus;
     });
-
-    emitter.on('localStream', stream => {
-      const speech = hark(stream, {
-        interval: 500
-      });
-      speech.on('volume_change', volume => {
-        emitter.emit('localVolumeChange', volume);
-      });
-    })
   }
 
   requestMediaAccess() {
@@ -36,6 +27,12 @@ class DoxymeSystemInfo {
       }).then(stream => {
         waitForDeviceInfo().then(userMediaStatus => {
           this.userMediaStatus = userMediaStatus;
+        });
+        const speech = hark(stream, {
+          interval: 500
+        });
+        speech.on('volume_change', volume => {
+          emitter.emit('localVolumeChange', volume);
         });
         localStream = stream;
         return stream;
