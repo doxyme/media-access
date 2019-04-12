@@ -5,6 +5,7 @@ import { getSystemInfo } from './lib/system-info'
 import { waitForDeviceInfo } from './lib/devices'
 
 const emitter = new EventEmitter;
+let localStream = null;
 
 /** @implements {GlobalSystemInfoObject} */
 class DoxymeSystemInfo {
@@ -27,15 +28,17 @@ class DoxymeSystemInfo {
   }
 
   requestMediaAccess() {
+    if(localStream) return localStream;
     return waitForDeviceInfo().then(deviceInfo => {
       return navigator.mediaDevices.getUserMedia({
         audio: deviceInfo.hasMicrophone,
         video: deviceInfo.hasCamera
       }).then(stream => {
-        emitter.emit('localStream', stream);
         waitForDeviceInfo().then(userMediaStatus => {
           this.userMediaStatus = userMediaStatus;
         });
+        localStream = stream;
+        return stream;
       });
     });
   }

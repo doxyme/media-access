@@ -5,7 +5,6 @@ interface MediaDevice<DeviceKind> {
 }
 
 type EventMap = {
-    localStream: MediaStream, // Typically fires once, when user allows access to camera
     localVolumeChange: Number // Will fire every 500ms or so
 };
 
@@ -35,7 +34,7 @@ interface GlobalSystemInfoObject {
         hasMediaAccess: Boolean // True if user allowed access in a previous session and browser saved the permission
     },
 
-    requestMediaAccess(): Promise<void>,
+    requestMediaAccess(): Promise<MediaStream>,
 
     on<EventName extends keyof EventMap> (
         event: EventName,

@@ -15,21 +15,18 @@ window.DOXYME = doxymeSystemInfo;
 // Use
 
 window.DOXYME.requestMediaAccess()
-  .then(() => {
+  .then(stream => {
     // User allowed browser to access camera/microphone
+    console.log(stream);
+      
+    // Attach stream to video element
+    const video = document.querySelector('#dokbot-video');
+    video.srcObject = stream;
   })
   .catch(err => {
     // There was an error
     console.log(err);
   });
-
-window.DOXYME.on('localStream', stream => {
-  console.log(stream);
-  
-  // Attach stream to video element
-  const video = document.querySelector('#dokbot-video');
-  video.srcObject = stream;
-});
 
 window.DOXYME.on('localVolumeChange', volume => {
   console.log(volume);
