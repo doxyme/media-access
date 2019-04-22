@@ -1,7 +1,7 @@
 ## Installation
 
 ```bash
-yarn add git://github.com/doxyme/sample-system-info
+yarn add git://github.com/doxyme/media-access
 ```
 
 ## Usage

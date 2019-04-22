@@ -1,5 +1,5 @@
 {
-  "name": "doxyme-system-info",
+  "name": "@doxyme/media-access",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
