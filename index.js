@@ -22,17 +22,18 @@ class DoxymeMediaAccess {
         audio: deviceInfo.hasMicrophone,
         video: deviceInfo.hasCamera
       }).then(stream => {
-        waitForDeviceInfo().then(userMediaStatus => {
+        return waitForDeviceInfo().then(userMediaStatus => {
           this.userMediaStatus = userMediaStatus;
+
+          const speech = hark(stream, {
+            interval: 500
+          });
+          speech.on('volume_change', volume => {
+            emitter.emit('localVolumeChange', volume);
+          });
+          localStream = stream;
+          return stream;
         });
-        const speech = hark(stream, {
-          interval: 500
-        });
-        speech.on('volume_change', volume => {
-          emitter.emit('localVolumeChange', volume);
-        });
-        localStream = stream;
-        return stream;
       });
     });
   }
