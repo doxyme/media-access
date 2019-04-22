@@ -1,18 +1,15 @@
 import EventEmitter from 'wolfy87-eventemitter/EventEmitter'
 import hark from 'hark';
 
-import { getSystemInfo } from './lib/system-info'
 import { waitForDeviceInfo } from './lib/devices'
 
 const emitter = new EventEmitter;
 let localStream = null;
 
-/** @implements {GlobalSystemInfoObject} */
-class DoxymeSystemInfo {
+/** @implements {MediaAccess} */
+class DoxymeMediaAccess {
   constructor() {
     this.userMediaStatus = {};
-    this.systemInfo = getSystemInfo();
-
     waitForDeviceInfo().then(userMediaStatus => {
       this.userMediaStatus = userMediaStatus;
     });
@@ -45,5 +42,5 @@ class DoxymeSystemInfo {
   }
 }
 
-/** @type GlobalSystemInfoObject */
-export default new DoxymeSystemInfo();
+/** @type MediaAccess */
+export default new DoxymeMediaAccess();

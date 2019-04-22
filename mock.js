@@ -10,18 +10,9 @@ function uuid() {
 const emitter = new EventEmitter;
 let localStream = null;
 
-/** @implements GlobalSystemInfoObject */
-function DoxymeSystemInfo() {
+/** @implements MediaAccess */
+function DoxymeMockedMediaAccess() {
   var self = this;
-
-  this.systemInfo = {
-    platform: 'desktop',
-    os: 'linux',
-    browser: 'chrome',
-    browserVersion: 73,
-    isSupportedBrowser: true,
-    isUpToDateBrowser: true
-  };
 
   this.userMediaStatus = {};
 
@@ -68,5 +59,5 @@ function DoxymeSystemInfo() {
   }
 }
 
-/** @type GlobalSystemInfoObject */
-module.exports = new DoxymeSystemInfo();
+/** @type MediaAccess */
+module.exports = new DoxymeMockedMediaAccess();

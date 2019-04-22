@@ -8,22 +8,7 @@ type EventMap = {
     localVolumeChange: Number // Will fire every 500ms or so
 };
 
-type PlatformName = 'mobile' | 'desktop';
-
-type OSName = 'linux' | 'mac' | 'windows' | 'ios' | 'android' | 'chromeos';
-
-type BrowserName = 'firefox' | 'chrome' | 'safari' | 'msedge' | 'opera' | 'msie' | 'samsungBrowser';
-
-interface GlobalSystemInfoObject {
-    systemInfo: {
-        platform: PlatformName,
-        os: OSName,
-        browser: BrowserName,
-        browserVersion: Number,
-        isSupportedBrowser: Boolean,
-        isUpToDateBrowser: Boolean
-    },
-
+interface MediaAccess {
     userMediaStatus: {
         cameras: MediaDevice<'videoInput'>[],
         microphones: MediaDevice<'audioInput'>[],
