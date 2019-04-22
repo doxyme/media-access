@@ -7,38 +7,31 @@ yarn add git://github.com/doxyme/sample-system-info
 ## Usage
 
 ```js
-// Initialise
+import DoxyMe from '@doxyme/media-access'
 
-import doxymeSystemInfo from 'doxyme-system-info';
-window.DOXYME = doxymeSystemInfo;
-
-// Use
-
-window.DOXYME.requestMediaAccess()
-  .then(stream => {
-    // User allowed browser to access camera/microphone
-    console.log(stream);
+try {
+  const stream = await DoxyMe.requestMediaAccess()
+  // User allowed browser to access camera/microphone
+  console.log(stream)
       
-    // Attach stream to video element
-    const video = document.querySelector('#dokbot-video');
-    video.srcObject = stream;
-  })
-  .catch(err => {
-    // There was an error
-    console.error(err);
-  });
+  // Attach stream to video element
+  const video = document.querySelector('#dokbot-video')
+  video.srcObject = stream
+} catch (err) {
+  // There was an error, or the user rejected access, etc.
+  console.error(err)
+}
 
-window.DOXYME.on('localVolumeChange', volume => {
-  console.log(volume);
-});
+DoxyMe.on('localVolumeChange', volume => {
+  console.log(volume)
+})
 
 ```
 
 ```js
-// Alternatively, import mocked version
+// Alternatively, import the mocked version
 
-import doxymeSystemInfo from 'doxyme-system-info/mock';
-window.DOXYME = doxymeSystemInfo;
+import DoxyMe from '@doxyme/media-access/mock'
 
 // Usage is the same
 // ...
