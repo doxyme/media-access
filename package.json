@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vicmiletsky/system-info.git"
+    "url": "git+https://github.com/doxyme/media-access.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vicmiletsky/system-info/issues"
+    "url": "https://github.com/doxyme/media-access/issues"
   },
-  "homepage": "https://github.com/vicmiletsky/system-info#readme",
+  "homepage": "https://github.com/doxyme/media-access#readme",
   "dependencies": {
     "bowser": "1.9.4",
     "hark": "^1.2.3",
