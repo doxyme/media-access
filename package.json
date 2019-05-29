@@ -1,27 +1,37 @@
 {
   "name": "@doxyme/media-access",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "parcel public/index.html --open"
+    "serve": "parcel public/index.html --open",
+    "build:browserslist": "bin/enumerate-browserslist > compatible-browsers.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/doxyme/media-access.git"
   },
-  "author": "",
+  "author": "Doxy.me <contact@doxy.me> (https://doxy.me/)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/doxyme/media-access/issues"
   },
   "homepage": "https://github.com/doxyme/media-access#readme",
   "dependencies": {
+    "bowser": "1.9.4",
     "hark": "^1.2.3",
     "wolfy87-eventemitter": "^5.2.6"
   },
   "devDependencies": {
+    "browserslist": "^4.6.1",
     "parcel-bundler": "^1.12.3"
-  }
+  },
+  "browserslist": [
+    "last 3 chrome major versions",
+    "last 3 firefox major versions",
+    "last 3 opera major versions",
+    "safari >= 11",
+    "samsung >= 8"
+  ]
 }

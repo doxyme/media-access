@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+const browserslist = require('browserslist')()
+const bowser = require('bowser')
+
+const browsers = {
+  supported: {},
+  latest:{},
+}
+
+browserslist.forEach(b => {
+  const [vendor, version] = b.split(' ')
+
+  if (!browsers.supported[vendor]) {
+    browsers.supported[vendor] = browsers.latest[vendor] = version
+    return
+  }
+
+  if (bowser.compareVersions(browsers.supported[vendor], version) > 0) {
+    browsers.supported[vendor] = version
+  }
+  if (bowser.compareVersions(browsers.latest[vendor], version) < 0) {
+    browsers.supported[vendor] = version
+  }
+})
+
+console.log(JSON.stringify(browsers, null, 2))
