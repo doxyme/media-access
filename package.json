@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "serve": "parcel public/index.html --open",
-    "build:browserslist": "browserslist --json > browserslist.json"
+    "build:browserslist": "bin/enumerate-browserslist > compatible-browsers.json"
   },
   "repository": {
     "type": "git",
