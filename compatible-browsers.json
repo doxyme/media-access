@@ -4,13 +4,15 @@
     "firefox": "66",
     "opera": "56",
     "safari": "11",
-    "samsung": "8.2"
+    "samsung": "8.2",
+    "samsungBrowser": "8.2"
   },
   "latest": {
     "chrome": "74",
     "firefox": "66",
     "opera": "58",
     "safari": "12.1",
-    "samsung": "9.2"
+    "samsung": "9.2",
+    "samsungBrowser": "9.2"
   }
 }
