@@ -15,8 +15,8 @@ export default {
   isSupportedBrowserVendor,
   isLatestBrowser,
 
-  isAndroid: bowser.android,
-  isIOS: bowser.ios,
-  isMac: bowser.mac,
-  isWindows: bowser.windows,
+  isAndroid: () => bowser.android,
+  isIOS: () => bowser.ios,
+  isMac: () => bowser.mac,
+  isWindows: () => bowser.windows,
 }
