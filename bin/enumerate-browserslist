@@ -24,4 +24,8 @@ browserslist.forEach(b => {
   }
 })
 
+// Remap samsung key for detection by bowser
+browsers.supported.samsungBrowser = browsers.supported.samsung
+browsers.latest.samsungBrowser = browsers.latest.samsung
+
 console.log(JSON.stringify(browsers, null, 2))
