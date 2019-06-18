@@ -19,4 +19,7 @@ export default {
   isIOS: () => bowser.ios,
   isMac: () => bowser.mac,
   isWindows: () => bowser.windows,
+
+  // Occurs on iOS Safari when loaded in an in-app browser
+  isUnsupportedBrowserFrame = () => this.isIOS() && !window.navigator.mediaDevices,
 }
