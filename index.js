@@ -8,23 +8,15 @@ let localStream = null;
 
 /** @implements {MediaAccess} */
 class DoxymeMediaAccess {
-  constructor() {
-    this.userMediaStatus = {};
-    waitForDeviceInfo().then(userMediaStatus => {
-      this.userMediaStatus = userMediaStatus;
-    });
-  }
+  constructor() {}
 
   requestMediaAccess() {
     if(localStream) return Promise.resolve(localStream);
-    return waitForDeviceInfo().then(deviceInfo => {
+    // return waitForDeviceInfo().then(deviceInfo => {
       return navigator.mediaDevices.getUserMedia({
-        audio: deviceInfo.hasMicrophone,
-        video: deviceInfo.hasCamera
+        audio: true,
+        video: true
       }).then(stream => {
-        return waitForDeviceInfo().then(userMediaStatus => {
-          this.userMediaStatus = userMediaStatus;
-
           const speech = hark(stream, {
             interval: 500
           });
@@ -34,8 +26,6 @@ class DoxymeMediaAccess {
           localStream = stream;
           return stream;
         });
-      });
-    });
   }
 
   on(...args) {
