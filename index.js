@@ -17,10 +17,9 @@ class DoxymeMediaAccess {
 
   requestMediaAccess() {
     if(localStream) return Promise.resolve(localStream);
-    return waitForDeviceInfo().then(deviceInfo => {
       return navigator.mediaDevices.getUserMedia({
-        audio: deviceInfo.hasMicrophone,
-        video: deviceInfo.hasCamera
+        audio: this.userMediaStatus.hasMicrophone,
+        video: this.userMediaStatus.hasCamera
       }).then(stream => {
         return waitForDeviceInfo().then(userMediaStatus => {
           this.userMediaStatus = userMediaStatus;
@@ -33,7 +32,6 @@ class DoxymeMediaAccess {
           });
           localStream = stream;
           return stream;
-        });
       });
     });
   }
