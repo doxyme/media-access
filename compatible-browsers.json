@@ -8,11 +8,11 @@
     "samsungBrowser": "8.2"
   },
   "latest": {
-    "chrome": "74",
-    "firefox": "66",
-    "opera": "58",
-    "safari": "12.1",
+    "chrome": "81",
+    "firefox": "75",
+    "opera": "66",
+    "safari": "13.4",
     "samsung": "9.2",
-    "samsungBrowser": "9.2"
+    "samsungBrowser": "11.1"
   }
 }
