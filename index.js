@@ -8,8 +8,9 @@ let localStream = null;
 
 /** @implements {MediaAccess} */
 class DoxymeMediaAccess {
-  self = this;
+  
   constructor() {
+    const self = this;
     self.userMediaStatus = {};
     waitForDeviceInfo().then(userMediaStatus => {
       self.userMediaStatus = userMediaStatus;
@@ -49,7 +50,7 @@ class DoxymeMediaAccess {
               if (contextClass) {
                   // Web Audio API is available.
                   audioContext = new contextClass();
-                  debugger
+                  // debugger
               } else {
                   // Web Audio API is not available. Fallback
               }
