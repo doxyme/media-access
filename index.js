@@ -8,24 +8,23 @@ let localStream = null;
 
 /** @implements {MediaAccess} */
 class DoxymeMediaAccess {
-  
+
   constructor() {
-    const self = this;
-    self.userMediaStatus = {};
+    this.userMediaStatus = {};
     waitForDeviceInfo().then(userMediaStatus => {
-      self.userMediaStatus = userMediaStatus;
+      this.userMediaStatus = userMediaStatus;
     });
   }
 
   requestMediaAccess() {
     if(localStream) return Promise.resolve(localStream);
       return navigator.mediaDevices.getUserMedia({
-        audio: self.userMediaStatus.hasMicrophone,
-        video: self.userMediaStatus.hasCamera
+        audio: this.userMediaStatus.hasMicrophone,
+        video: this.userMediaStatus.hasCamera
       }).then(stream => {
         
         return waitForDeviceInfo().then(userMediaStatus => {
-          // self.userMediaStatus = userMediaStatus;
+          // this.userMediaStatus = userMediaStatus;
 
           // self.speech = hark(stream, {
           //   interval: 500,
@@ -50,7 +49,7 @@ class DoxymeMediaAccess {
               if (contextClass) {
                   // Web Audio API is available.
                   audioContext = new contextClass();
-                  // debugger
+                  // `debugger`
               } else {
                   // Web Audio API is not available. Fallback
               }
