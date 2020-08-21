@@ -19,25 +19,10 @@ class DoxymeMediaAccess {
   requestMediaAccess() {
     if(localStream) return Promise.resolve(localStream);
       return navigator.mediaDevices.getUserMedia({
-        audio: this.userMediaStatus.hasMicrophone,
         video: this.userMediaStatus.hasCamera
       }).then(stream => {
         
-        return waitForDeviceInfo().then(userMediaStatus => {
-          // this.userMediaStatus = userMediaStatus;
-
-          // self.speech = hark(stream, {
-          //   interval: 500,
-          //   threshold: -100
-          // });
-
-          // self.speech.on('speaking', volume => {
-          //   emitter.emit('localVolumeChange', volume);
-          // });
-          
-          // localStream = stream;
-          // return stream;
-
+        return waitForDeviceInfo().then( () => {
           navigator.mediaDevices.getUserMedia({ audio: true, video: true })
           .then(function(stream) {
             let audioContext, analyser, microphone, javascriptNode;
@@ -49,7 +34,6 @@ class DoxymeMediaAccess {
               if (contextClass) {
                   // Web Audio API is available.
                   audioContext = new contextClass();
-                  // `debugger`
               } else {
                   // Web Audio API is not available. Fallback
               }
@@ -68,17 +52,12 @@ class DoxymeMediaAccess {
                 var array = new Uint8Array(analyser.frequencyBinCount);
                 analyser.getByteFrequencyData(array);
                 var values = 0;
-          
                 var length = array.length;
                 for (var i = 0; i < length; i++) {
                   values += (array[i]);
                 }
-          
                 var average = values / length;
-          
-              console.error(Math.round(average));
                 emitter.emit('localVolumeChange', Math.round(average));
-              // colorPids(average);
             }
             })
             .catch(function(err) {
@@ -86,7 +65,8 @@ class DoxymeMediaAccess {
               /* handle the error */
           });
       
-
+          localStream = stream;
+          return stream;
       });
     });
   }
