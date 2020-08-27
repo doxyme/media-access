@@ -8,7 +8,6 @@ let localStream = null;
 
 /** @implements {MediaAccess} */
 class DoxymeMediaAccess {
-
   constructor() {
     this.userMediaStatus = {};
     waitForDeviceInfo().then(userMediaStatus => {
@@ -19,6 +18,7 @@ class DoxymeMediaAccess {
   requestMediaAccess() {
     if(localStream) return Promise.resolve(localStream);
       return navigator.mediaDevices.getUserMedia({
+        audio: this.userMediaStatus.hasMicrophone,
         video: this.userMediaStatus.hasCamera
       }).then(stream => {
         
@@ -64,7 +64,6 @@ class DoxymeMediaAccess {
               console.error(err);
               /* handle the error */
           });
-      
           localStream = stream;
           return stream;
       });
