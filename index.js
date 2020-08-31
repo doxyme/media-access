@@ -1,5 +1,4 @@
 import EventEmitter from 'wolfy87-eventemitter/EventEmitter'
-import hark from 'hark';
 
 import { waitForDeviceInfo } from './lib/devices'
 
