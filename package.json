@@ -20,7 +20,6 @@
   "homepage": "https://github.com/doxyme/media-access#readme",
   "dependencies": {
     "bowser": "1.9.4",
-    "hark": "^1.2.3",
     "wolfy87-eventemitter": "^5.2.6"
   },
   "devDependencies": {
